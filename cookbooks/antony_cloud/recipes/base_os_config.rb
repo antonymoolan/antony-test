@@ -11,20 +11,20 @@ template "/etc/hostname" do
   end
 
 bash "set_hostname" do
-    code <<-EOH
+    code << EOH
       start hostname
     EOH
   end
 
 if platform?('centos', 'redhat')
   bash "set_hostname" do
-    code <<-EOH
+    code << EOH
       hostname #{hostname_fqdn}
     EOH
   end
 else
   bash "set_hostname" do
-    code <<-EOH
+    code << EOH
       start hostname
     EOH
   end
